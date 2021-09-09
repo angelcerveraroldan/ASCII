@@ -1,8 +1,14 @@
-import java.awt.Image
-import scala.concurrent.Future
+import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
 
+//.makeBlackAndWhiteImg("blackAndWhite")
 object ShowImage extends App {
-  val image = new ImageAscii(imageName = "eagle.jpeg").makeBlackAndWhiteImg("blackAndWhite")
+  val imageName: String = "eagle.jpeg"
 
-  val blackAndWhiteImage = new ImageAscii(imageName = "blackAndWhite").resizeImage()
+  val projectPath: String = new java.io.File(".").getCanonicalPath
+  val originalImage: BufferedImage = ImageIO.read(new File(s"$projectPath/src/images/$imageName"))
+
+  val imageAscii = new ImageAscii(originalImage).resize(300).makeBlackAndWhiteImg("bAndW")
 }
+
