@@ -10,9 +10,7 @@ object ShowImage extends App {
 
   val originalImage: BufferedImage = ImageIO.read(new File(s"$projectPath/src/images/$imageName"))
   val sizedImage: BufferedImage = prepareImage("newImg", originalImage, 300)
-  ImageIO.write(sizedImage, "jpeg", new File(s"src/images/newImage.jpeg"))
 
-
-  printImage(0, 0, sizedImage)
+  printImage(sizedImage)
 }
 
